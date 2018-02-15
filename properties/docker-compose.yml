@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  properties:
+    image: properties
+    build:
+      context: ./properties
+      dockerfile: Dockerfile
