@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sports.Models;
+using Sports.Models.Pages;
 
 namespace Sports.Controllers
 {
@@ -12,6 +13,11 @@ namespace Sports.Controllers
         {
             repository = repo;
             catRepository = catRepo;
+        }
+
+        public IActionResult Index(QueryOptions options)
+        {
+            return View(repository.GetProducts(options));
         }
 
         public IActionResult Index()

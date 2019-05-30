@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sports.Models;
+using Sports.Models.Pages;
 
 namespace Sports.Controllers
 {
@@ -8,6 +9,8 @@ namespace Sports.Controllers
         private ICategoryRepository repository;
 
         public CategoriesController(ICategoryRepository repo) => repository = repo;
+
+        public IActionResult Index(QueryOptions options) => View(repository.GetCategories(options));
 
         public IActionResult Index() => View(repository.Categories);
 
