@@ -1,0 +1,42 @@
+﻿<h1>Delivery Devil</h1>
+<hr />
+<hr />
+<h1>Order Details :</h1>
+
+<p *ngIf="!orders"><em>Loading Order Details please Wait ! ...</em></p>
+
+<table class='table' style="background-color:#FFFFFF; border:2px #6D7B8D; padding:5px;width:99%;table-layout:fixed;" cellpadding="2" cellspacing="2" *ngIf="order">
+
+    <tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;border: solid 1px #659EC7;">
+        <td width="100" align="center">ID</td>
+        <td width="240" align="center">Customer Name</td>
+        <td width="240" align="center">Email</td>
+        <td width="120" align="center">Phone</td>
+        <td width="340" align="center">Address</td>
+
+
+    </tr>
+    <tbody *ngFor="let Orders  of order">
+        <tr>
+            <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                <span style="color:#9F000F">{{Orders.FirstName}}</span>
+            </td>
+
+            <td align="left" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                <span style="color:#9F000F">{{Orders.LastName}}</span>
+            </td>
+
+            <td align="left" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                <span style="color:#9F000F">{{Orders.CustomerAddress}}</span>
+            </td>
+
+            <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                <span style="color:#9F000F">{{Orders.HasTipped}}</span>
+            </td>
+
+            <td align="left" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                <span style="color:#9F000F">{{Orders.OrderAmount}}</span>
+            </td>
+        </tr>
+    </tbody>
+</table> 
