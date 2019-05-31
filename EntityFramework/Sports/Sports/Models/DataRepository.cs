@@ -61,5 +61,16 @@ namespace Sports.Models
             context.Products.Remove(product);
             context.SaveChanges();
         }
+
+        public PagedList<Product> GetProducts(QueryOptions options, long category = 0)
+        {
+            IQueryable<Product> query = context.Products.Include(p => p.Category);
+            if (category != -0)
+            {
+                query = query.Where(p => p.CategoryID == category);
+            }
+
+            return new PagedList<Product>(query, options);
+        }
     }
 }
