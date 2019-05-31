@@ -14,13 +14,16 @@ namespace Sports
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            string conString = Configuration["ConnectionStrings:DefaultConnection"];
             services.AddMvc();
             services.AddTransient<IRepository, DataRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IOrdersRepository, OrdersRepository>();
+            services.AddTransient<IWebServiceRepository, WebServiceRepository>();
             services.AddDistributedSqlServerCache(options =>
             {
-                options.ConnectionString = "DESKTOP-EEVRR9N\\SQLEXPRESS";
+                options.ConnectionString = conString;
                 options.SchemaName = "dbo";
                 options.TableName = "SessionData";
             });
@@ -33,8 +36,9 @@ namespace Sports
             });
 
 
-            string conString = Configuration["ConnectionStrings:DefaultConnection"];
+
             services.AddDbContext<DataContext>(options => options.UseSqlServer(conString));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
